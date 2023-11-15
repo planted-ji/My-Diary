@@ -11,6 +11,7 @@ import {
   Title,
   Wrapper,
 } from "../components/auth";
+import GoogleButton from "../components/google-button";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -72,6 +73,7 @@ export default function Login() {
       <Switcher>
         계정이 없으신가요? <Link to="/join">회원가입 하러 가기 &rarr;</Link>{" "}
       </Switcher>
+      <GoogleButton />
     </Wrapper>
   );
 }
