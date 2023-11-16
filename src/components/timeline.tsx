@@ -25,6 +25,17 @@ const Wrapper = styled.div`
   gap: 10px;
   flex-direction: column;
   overflow-y: scroll;
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+  &::-webkit-scrollbar-track {
+    background-color: black;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #f9f9f9;
+    border-radius: 50px;
+  }
 `;
 
 export default function Timeline() {

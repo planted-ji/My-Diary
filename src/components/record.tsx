@@ -10,6 +10,7 @@ const Wrapper = styled.div`
   padding: 20px;
   border: 1px solid rgba(255, 255, 255, 0.5);
   border-radius: 15px;
+  margin: 0 20px 0 20px;
 `;
 
 const Column = styled.div`
@@ -32,6 +33,7 @@ const Username = styled.span`
 const Payload = styled.p`
   margin: 10px 0px;
   font-size: 18px;
+  margin-right: 10px;
 `;
 
 const DeleteButton = styled.button`
@@ -43,6 +45,7 @@ const DeleteButton = styled.button`
   padding: 5px 10px;
   text-transform: uppercase;
   border-radius: 5px;
+  margin-right: 10px;
   cursor: pointer;
 `;
 
