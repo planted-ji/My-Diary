@@ -13,6 +13,8 @@ import {
 } from "firebase/firestore";
 import { IRecord } from "../components/timeline";
 import Record from "../components/record";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const Wrapper = styled.div`
   display: flex;
@@ -57,6 +59,7 @@ export default function Profile() {
   const user = auth.currentUser;
   const [avatar, setAvatar] = useState(user?.photoURL);
   const [records, setRecords] = useState<IRecord[]>([]);
+  const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   const onAvatarChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const { files } = e.target;
     if (!user) return;
@@ -74,13 +77,31 @@ export default function Profile() {
     }
   };
   const fetchRecords = async () => {
-    const recordQuery = query(
-      // 모든 기록 중에서 기록한 id가 현재 로그인한 유저 id와 같은 기록만 가져오기
-      collection(db, "records"),
-      where("userId", "==", user?.uid),
-      orderBy("createdAt", "desc"),
-      limit(10)
-    );
+    let recordQuery;
+
+    if (selectedDate) {
+      const startOfDay = new Date(selectedDate);
+      startOfDay.setHours(0, 0, 0, 0);
+      const endOfDay = new Date(selectedDate);
+      endOfDay.setHours(23, 59, 59, 999);
+
+      recordQuery = query(
+        collection(db, "records"),
+        where("userId", "==", user?.uid),
+        where("createdAt", ">=", startOfDay),
+        where("createdAt", "<=", endOfDay),
+        orderBy("createdAt", "desc"),
+        limit(10)
+      );
+    } else {
+      recordQuery = query(
+        collection(db, "records"),
+        where("userId", "==", user?.uid),
+        orderBy("createdAt", "desc"),
+        limit(10)
+      );
+    }
+
     const snapshot = await getDocs(recordQuery);
     const records = snapshot.docs.map((doc) => {
       const { record, createdAt, userId, username, photo } = doc.data();
@@ -98,7 +119,11 @@ export default function Profile() {
   };
   useEffect(() => {
     fetchRecords();
-  }, []);
+  }, [selectedDate]);
+
+  const handleDateChange = (date: Date | null) => {
+    setSelectedDate(date);
+  };
 
   return (
     <Wrapper>
@@ -123,6 +148,11 @@ export default function Profile() {
         accept="image/*"
       />
       <Name>{user?.displayName ?? "Anonymous"}</Name>
+      <DatePicker
+        selected={selectedDate}
+        onChange={handleDateChange}
+        dateFormat="yyyy-MM-dd"
+      />
       <Records>
         {records.map((record) => (
           <Record key={record.id} {...record} />
