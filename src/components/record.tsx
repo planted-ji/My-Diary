@@ -1,8 +1,8 @@
 import { styled } from "styled-components";
 import { IRecord } from "./timeline";
-import { auth, db } from "../firebase";
+import { auth, db, storage } from "../firebase";
 import { deleteDoc, doc } from "firebase/firestore";
-import { deleteObject } from "firebase/storage";
+import { deleteObject, ref } from "firebase/storage";
 
 const Wrapper = styled.div`
   display: grid;

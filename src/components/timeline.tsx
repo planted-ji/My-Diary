@@ -1,6 +1,5 @@
 import {
   collection,
-  getDocs,
   limit,
   onSnapshot,
   orderBy,
@@ -41,20 +40,7 @@ export default function Timeline() {
         orderBy("createdAt", "desc"),
         limit(10)
       );
-      /*  
-       const spanshot = await getDocs(recordsQuery);
-        const records = spanshot.docs.map((doc) => {
-          const { record, createdAt, userId, username, photo } = doc.data();
-          return {
-            record,
-            createdAt,
-            userId,
-            username,
-            photo,
-            id: doc.id,
-          };
-        }); 
-        */
+
       // 이벤트 리스너 연결
       unsubscribe = await onSnapshot(recordsQuery, (snapshot) => {
         const records = snapshot.docs.map((doc) => {

@@ -19,6 +19,7 @@ const Wrapper = styled.div`
   align-items: center;
   flex-direction: column;
   gap: 20px;
+  font-size: 22px;
 `;
 const AvatarUpload = styled.label`
   width: 80px;
@@ -55,7 +56,7 @@ const Records = styled.div`
 export default function Profile() {
   const user = auth.currentUser;
   const [avatar, setAvatar] = useState(user?.photoURL);
-  const [recods, setRecords] = useState<IRecord[]>([]);
+  const [records, setRecords] = useState<IRecord[]>([]);
   const onAvatarChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const { files } = e.target;
     if (!user) return;
@@ -77,7 +78,7 @@ export default function Profile() {
       // 모든 기록 중에서 기록한 id가 현재 로그인한 유저 id와 같은 기록만 가져오기
       collection(db, "records"),
       where("userId", "==", user?.uid),
-      orderBy("createAt", "desc"),
+      orderBy("createdAt", "desc"),
       limit(10)
     );
     const snapshot = await getDocs(recordQuery);
@@ -92,7 +93,7 @@ export default function Profile() {
         id: doc.id,
       };
     });
-    setRecords(recods);
+    setRecords(records);
   };
   useEffect(() => {
     fetchRecords();
@@ -122,7 +123,7 @@ export default function Profile() {
       />
       <Name>{user?.displayName ?? "Anonymous"}</Name>
       <Records>
-        {recods.map((record) => (
+        {records.map((record) => (
           <Record key={record.id} {...record} />
         ))}
       </Records>

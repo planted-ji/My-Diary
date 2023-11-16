@@ -1,4 +1,3 @@
-import firebase from "firebase/compat/app";
 import { styled } from "styled-components";
 import { auth } from "../firebase";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
