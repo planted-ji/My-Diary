@@ -1,8 +1,18 @@
 import { styled } from "styled-components";
-import { auth, storage } from "../firebase";
-import { useState } from "react";
+import { auth, db, storage } from "../firebase";
+import { useEffect, useState } from "react";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { updateProfile } from "firebase/auth";
+import {
+  collection,
+  getDocs,
+  limit,
+  orderBy,
+  query,
+  where,
+} from "firebase/firestore";
+import { IRecord } from "../components/timeline";
+import Record from "../components/record";
 
 const Wrapper = styled.div`
   display: flex;
@@ -35,9 +45,17 @@ const Name = styled.span`
   font-size: 22px;
 `;
 
+const Records = styled.div`
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  gap: 10px;
+`;
+
 export default function Profile() {
   const user = auth.currentUser;
   const [avatar, setAvatar] = useState(user?.photoURL);
+  const [recods, setRecords] = useState<IRecord[]>([]);
   const onAvatarChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const { files } = e.target;
     if (!user) return;
@@ -54,6 +72,31 @@ export default function Profile() {
       });
     }
   };
+  const fetchRecords = async () => {
+    const recordQuery = query(
+      // 모든 기록 중에서 기록한 id가 현재 로그인한 유저 id와 같은 기록만 가져오기
+      collection(db, "records"),
+      where("userId", "==", user?.uid),
+      orderBy("createAt", "desc"),
+      limit(10)
+    );
+    const snapshot = await getDocs(recordQuery);
+    const records = snapshot.docs.map((doc) => {
+      const { record, createdAt, userId, username, photo } = doc.data();
+      return {
+        record,
+        createdAt,
+        userId,
+        username,
+        photo,
+        id: doc.id,
+      };
+    });
+    setRecords(recods);
+  };
+  useEffect(() => {
+    fetchRecords();
+  }, []);
 
   return (
     <Wrapper>
@@ -78,6 +121,11 @@ export default function Profile() {
         accept="image/*"
       />
       <Name>{user?.displayName ?? "Anonymous"}</Name>
+      <Records>
+        {recods.map((record) => (
+          <Record key={record.id} {...record} />
+        ))}
+      </Records>
     </Wrapper>
   );
 }
