@@ -88,10 +88,7 @@ export default function recordForm() {
         userId: user.uid,
       });
       if (file) {
-        const locationRef = ref(
-          storage,
-          `records/${user.uid}-${user.displayName}/${doc.id}`
-        );
+        const locationRef = ref(storage, `records/${user.uid}/${doc.id}`);
         const result = await uploadBytes(locationRef, file);
         // 업로드한 사진의 url 반환
         const url = await getDownloadURL(result.ref);
