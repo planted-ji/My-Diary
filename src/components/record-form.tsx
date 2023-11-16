@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { styled } from "styled-components";
 import { auth, db, storage } from "../firebase";
-import { addDoc, collection, updateDoc } from "firebase/firestore";
+import { Timestamp, addDoc, collection, updateDoc } from "firebase/firestore";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 
 const Form = styled.form`
@@ -81,9 +81,10 @@ export default function recordForm() {
     try {
       setLoading(true);
       // 새로운 document를 생성하는 Firebase 함수
+      const createdAt = Timestamp.now();
       const doc = await addDoc(collection(db, "records"), {
         record,
-        createdAt: Date.now(),
+        createdAt,
         username: user.displayName || "Anonymous",
         userId: user.uid,
       });

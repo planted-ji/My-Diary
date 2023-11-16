@@ -55,6 +55,7 @@ export default function Record({
   record,
   userId,
   id,
+  createdAt,
 }: IRecord) {
   const user = auth.currentUser;
   const onDelete = async () => {
@@ -76,6 +77,7 @@ export default function Record({
       <Column>
         <Username>{username}</Username>
         <Payload>{record}</Payload>
+        <Payload>{createdAt.toLocaleString()}</Payload>
         {user?.uid === userId ? (
           <DeleteButton onClick={onDelete}>삭제</DeleteButton>
         ) : null}

@@ -17,7 +17,7 @@ export interface IRecord {
   record: string;
   userId: string;
   username: string;
-  createdAt: number;
+  createdAt: string;
 }
 
 const Wrapper = styled.div`
@@ -58,7 +58,7 @@ export default function Timeline() {
           const { record, createdAt, userId, username, photo } = doc.data();
           return {
             record,
-            createdAt,
+            createdAt: createdAt.toDate(),
             userId,
             username,
             photo,
