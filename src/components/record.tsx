@@ -15,22 +15,24 @@ const Wrapper = styled.div`
   background-color: rgba(255, 255, 255, 0.8);
 `;
 
-const Column = styled.div`
-  &:last-child {
-    place-self: end;
-  }
-`;
-
-const Section = styled.section`
+const Div = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+`;
+
+const MainRecord = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin: 15px 0 10px 0;
 `;
 
 const Photo = styled.img`
   width: 100px;
   height: 100px;
   border-radius: 15px;
+  margin-bottom: 5px;
 `;
 
 const Username = styled.span`
@@ -45,7 +47,6 @@ const Date = styled.time`
 `;
 
 const Payload = styled.p`
-  margin: 15px 0 10px 0;
   font-size: 18px;
   color: #514f66;
   margin-right: 10px;
@@ -104,17 +105,17 @@ export default function Record({
 
   return (
     <Wrapper>
-      <Column>
-        <Username>{username}</Username>
+      <Username>{username}</Username>
+      <MainRecord>
         <Payload>{record}</Payload>
-        <Section>
-          <Date>{createdAt.toLocaleString()}</Date>
-          {user?.uid === userId ? (
-            <DeleteButton onClick={onDelete}>삭제</DeleteButton>
-          ) : null}
-        </Section>
-      </Column>
-      <Column>{photo ? <Photo src={photo} /> : null}</Column>
+        {photo ? <Photo src={photo} /> : null}
+      </MainRecord>
+      <Div>
+        <Date>{createdAt.toLocaleString()}</Date>
+        {user?.uid === userId ? (
+          <DeleteButton onClick={onDelete}>삭제</DeleteButton>
+        ) : null}
+      </Div>
     </Wrapper>
   );
 }
