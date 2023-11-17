@@ -43,7 +43,6 @@ export default function Join() {
         email,
         password
       );
-      console.log(credentials.user);
       await updateProfile(credentials.user, {
         displayName: name,
       });
@@ -55,8 +54,6 @@ export default function Join() {
     } finally {
       setLoading(false);
     }
-
-    console.log(name, email, password);
   };
   return (
     <Wrapper>
