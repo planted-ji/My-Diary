@@ -1,5 +1,5 @@
 import { Link, Outlet, useNavigate } from "react-router-dom";
-import { styled } from "styled-components";
+import { keyframes, styled } from "styled-components";
 import { auth } from "../firebase";
 
 const Wrapper = styled.div`
@@ -19,6 +19,18 @@ const Menu = styled.div`
   gap: 20px;
 `;
 
+const jellyAnimation = keyframes`
+  25% {
+    transform: scale(0.9, 1.1);
+  }
+  50% {
+    transform: scale(1.1, 0.9);
+  }
+  75% {
+    transform: scale(0.95, 1.05);
+  }
+`;
+
 const MenuItem = styled.div`
   cursor: pointer;
   display: flex;
@@ -31,6 +43,9 @@ const MenuItem = styled.div`
   svg {
     width: 30px;
     fill: white;
+  }
+  &:hover {
+    animation: ${jellyAnimation} 0.5s;
   }
   &.log-out {
     border-color: tomato;
