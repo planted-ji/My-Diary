@@ -42,14 +42,25 @@ const router = createBrowserRouter([
 
 const GlobalStyles = createGlobalStyle`
   ${reset};
+  @font-face {
+    font-family: 'NPSfontBold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2310@1.0/NPSfontBold.woff2') format('woff2');
+    font-weight: 400, 700;
+    font-style: normal;
+  }
+  
   * {
     box-sizing: border-box;
   }
+  
   body {
     margin: 0 20px;
-    background-color: black;
     color: white;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: 'NPSfontBold', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-image: url("../public/room-balcony.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     overflow-y: scroll;
     scrollbar-width: none;
   -ms-overflow-style: none;
