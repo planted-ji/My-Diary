@@ -28,7 +28,7 @@ const AvatarUpload = styled.label`
   overflow: hidden;
   height: 80px;
   border-radius: 50%;
-  background-color: #1d9bf0;
+  background-color: #aaa1ff;
   cursor: pointer;
   display: flex;
   justify-content: center;
@@ -46,6 +46,7 @@ const AvatarInput = styled.input`
 `;
 const Name = styled.span`
   font-size: 22px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
 `;
 
 const Records = styled.div`

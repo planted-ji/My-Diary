@@ -11,12 +11,12 @@ const Form = styled.form`
 `;
 
 const TextArea = styled.textarea`
-  border: 2px solid white;
+  border: 2px solid #aaa1ff;
   padding: 20px;
   border-radius: 20px;
   font-size: 16px;
-  color: white;
-  background-color: black;
+  color: #000;
+  background-color: white;
   width: 100%;
   resize: none;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
@@ -26,19 +26,24 @@ const TextArea = styled.textarea`
   }
   &:focus {
     outline: none;
-    border-color: #1d9bf0;
+    border-color: #aaa1ff;
   }
 `;
 
 const AddFileButton = styled.label`
   padding: 10px 0px;
-  color: #1d9bf0;
+  color: #aaa1ff;
+  background-color: white;
+  &:hover {
+    opacity: 0.8;
+  }
   text-align: center;
   border-radius: 20px;
-  border: 1px solid #1d9bf0;
+  border: 1px solid #aaa1ff;
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;
+  transition: all 0.2s;
 `;
 
 const AddFileInput = styled.input`
@@ -46,17 +51,18 @@ const AddFileInput = styled.input`
 `;
 
 const SubmitBtn = styled.input`
-  background-color: #1d9bf0;
+  background-color: #aaa1ff;
   color: white;
   border: none;
   padding: 10px 0px;
   border-radius: 20px;
+  font-family: "NPSfontBold";
   font-size: 16px;
   cursor: pointer;
-  &:hover,
-  &:active {
-    opacity: 0.9;
+  &:hover {
+    background-color: #8578ff;
   }
+  transition: all 0.2s;
 `;
 
 export default function recordForm() {
@@ -114,10 +120,10 @@ export default function recordForm() {
         maxLength={180}
         onChange={onChange}
         value={record}
-        placeholder="무슨 일이 일어나고 있나요?"
+        placeholder="오늘 하루는 어땠나요?"
       ></TextArea>
       <AddFileButton htmlFor="file">
-        {file ? "업로드 완료 ✅" : "이미지 업로드"}
+        {file ? "업로드 완료 🎉" : "이미지 업로드"}
       </AddFileButton>
       <AddFileInput
         onChange={onFileChange}
@@ -125,7 +131,7 @@ export default function recordForm() {
         id="file"
         accept="image/*"
       />
-      <SubmitBtn type="submit" value={isLoading ? "입력 중..." : "등록하기"} />
+      <SubmitBtn type="submit" value={isLoading ? "입력 중..." : "기록하기"} />
     </Form>
   );
 }

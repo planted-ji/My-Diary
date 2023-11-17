@@ -6,17 +6,24 @@ import { deleteObject, ref } from "firebase/storage";
 
 const Wrapper = styled.div`
   display: grid;
-  grid-template-columns: 3fr 1fr;
+  grid-template-columns: 3fr;
   padding: 20px;
   border: 1px solid rgba(255, 255, 255, 0.5);
   border-radius: 15px;
   margin: 0 20px 0 20px;
+  background-color: rgba(255, 255, 255, 0.8);
 `;
 
 const Column = styled.div`
   &:last-child {
     place-self: end;
   }
+`;
+
+const Section = styled.section`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 `;
 
 const Photo = styled.img`
@@ -28,21 +35,33 @@ const Photo = styled.img`
 const Username = styled.span`
   font-weight: 600;
   font-size: 15px;
+  color: #845f99;
+`;
+
+const Date = styled.time`
+  font-size: 11px;
+  color: #514f66;
 `;
 
 const Payload = styled.p`
-  margin: 10px 0px;
+  margin: 15px 0 10px 0;
   font-size: 18px;
+  color: #514f66;
   margin-right: 10px;
 `;
 
 const DeleteButton = styled.button`
   background-color: tomato;
+  &:hover {
+    background-color: #db462b;
+  }
+  transition: all 0.2s;
   color: white;
   font-weight: 600;
   border: 0;
+  font-family: "NPSfontBold";
   font-size: 12px;
-  padding: 5px 10px;
+  padding: 8px 10px;
   text-transform: uppercase;
   border-radius: 5px;
   margin-right: 10px;
@@ -77,10 +96,12 @@ export default function Record({
       <Column>
         <Username>{username}</Username>
         <Payload>{record}</Payload>
-        <Payload>{createdAt.toLocaleString()}</Payload>
-        {user?.uid === userId ? (
-          <DeleteButton onClick={onDelete}>삭제</DeleteButton>
-        ) : null}
+        <Section>
+          <Date>{createdAt.toLocaleString()}</Date>
+          {user?.uid === userId ? (
+            <DeleteButton onClick={onDelete}>삭제</DeleteButton>
+          ) : null}
+        </Section>
       </Column>
       <Column>{photo ? <Photo src={photo} /> : null}</Column>
     </Wrapper>

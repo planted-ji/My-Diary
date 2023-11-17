@@ -29,7 +29,7 @@ const Wrapper = styled.div`
     width: 4px;
   }
   &::-webkit-scrollbar-track {
-    background-color: black;
+    background-color: none;
   }
 
   &::-webkit-scrollbar-thumb {
