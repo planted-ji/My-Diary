@@ -57,7 +57,7 @@ const GlobalStyles = createGlobalStyle`
     margin: 0 20px;
     color: white;
     font-family: 'NPSfontBold', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    background-image: url("../public/room-balcony.jpg");
+    background-image: url("/room-balcony.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
