@@ -49,7 +49,7 @@ export default function Login() {
   };
   return (
     <Wrapper>
-      <Title>Login SNS</Title>
+      <Title>나만의 일기장</Title>
       <Form onSubmit={onSubmit}>
         <Input
           onChange={onChange}

@@ -60,7 +60,7 @@ export default function Join() {
   };
   return (
     <Wrapper>
-      <Title>Join SNS</Title>
+      <Title>회원가입</Title>
       <Form onSubmit={onSubmit}>
         <Input
           onChange={onChange}
