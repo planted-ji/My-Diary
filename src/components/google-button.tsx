@@ -6,9 +6,13 @@ import { useNavigate } from "react-router-dom";
 const Button = styled.span`
   margin-top: 50px;
   background-color: white;
+  transition: all 0.2s;
+  &:hover {
+    opacity: 0.8;
+  }
   font-weight: 500;
   width: 100%;
-  color: black;
+  color: #000;
   padding: 10px 20px;
   border-radius: 50px;
   border: 0;
