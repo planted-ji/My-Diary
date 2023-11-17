@@ -5,12 +5,13 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   width: 420px;
-  padding: 50px 0px;
 `;
 
 export const Title = styled.h1`
   font-size: 42px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
 `;
 
 export const Form = styled.form`
@@ -27,12 +28,13 @@ export const Input = styled.input`
   border: none;
   width: 100%;
   font-size: 16px;
+  transition: all 0.2s;
   &[type="submit"] {
     cursor: pointer;
-    background-color: #1d9bf0;
+    background-color: #aaa1ff;
     color: white;
     &:hover {
-      opacity: 0.8;
+      background-color: #8578ff;
     }
   }
 `;
@@ -44,7 +46,8 @@ export const Error = styled.span`
 
 export const Switcher = styled.span`
   margin-top: 20px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
   a {
-    color: #1d9bf0;
+    color: #ffde8f;
   }
 `;
