@@ -3,6 +3,7 @@ import { IRecord } from "./timeline";
 import { auth, db, storage } from "../firebase";
 import { deleteDoc, doc } from "firebase/firestore";
 import { deleteObject, ref } from "firebase/storage";
+import { useState } from "react";
 
 const Wrapper = styled.div`
   display: grid;
@@ -76,6 +77,8 @@ export default function Record({
   id,
   createdAt,
 }: IRecord) {
+  const [isDeleted, setIsDeleted] = useState(false); // 삭제 여부 상태 추가
+
   const user = auth.currentUser;
   const onDelete = async () => {
     const ok = confirm("정말 이 기록을 삭제하시겠습니까?");
@@ -87,10 +90,18 @@ export default function Record({
         const photoRef = ref(storage, `records/${user.uid}/${id}`);
         await deleteObject(photoRef);
       }
+      // 상태 업데이트로 컴포넌트 리렌더링
+      setIsDeleted(true);
     } catch (e) {
       console.log(e);
     }
   };
+
+  // 삭제된 경우 UI에 아무것도 표시하지 않음
+  if (isDeleted) {
+    return null;
+  }
+
   return (
     <Wrapper>
       <Column>
