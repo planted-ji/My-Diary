@@ -106,10 +106,9 @@ export default function Profile() {
     const snapshot = await getDocs(recordQuery);
     const records = snapshot.docs.map((doc) => {
       const { record, createdAt, userId, username, photo } = doc.data();
-      const createdDate = createdAt.toDate();
       return {
         record,
-        createdAt: createdDate,
+        createdAt: createdAt.toDate(),
         userId,
         username,
         photo,
