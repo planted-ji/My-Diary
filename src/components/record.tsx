@@ -84,7 +84,7 @@ export default function Record({
 
   const user = auth.currentUser;
   const onDelete = async () => {
-    const ok = confirm("정말 이 기록을 삭제하시겠습니까?");
+    const ok = confirm("정말 기록을 삭제하시나요?");
     // 로그인 유저 ID와 작성자 ID가 다를 경우, 함수 종료
     if (!ok || user?.uid !== userId) return;
     try {
