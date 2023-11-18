@@ -2,7 +2,7 @@ import { Link, Outlet, useNavigate } from "react-router-dom";
 import { keyframes, styled } from "styled-components";
 import { auth } from "../firebase";
 
-const Wrapper = styled.nav`
+const Wrapper = styled.section`
   display: grid;
   gap: 20px;
   grid-template-columns: 1fr 4fr;
@@ -12,7 +12,7 @@ const Wrapper = styled.nav`
   max-width: 860px;
 `;
 
-const Menu = styled.div`
+const Menu = styled.nav`
   display: flex;
   flex-direction: column;
   align-items: center;
