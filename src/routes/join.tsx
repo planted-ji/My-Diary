@@ -65,6 +65,8 @@ export default function Join() {
           value={name}
           placeholder="Name"
           type="text"
+          minLength={1}
+          maxLength={6}
           required
         />
         <Input
