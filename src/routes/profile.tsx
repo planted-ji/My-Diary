@@ -17,16 +17,30 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 const Wrapper = styled.section`
-  display: flex;
-  align-items: center;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: 1fr 5fr;
   gap: 20px;
+  overflow-y: scroll;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
   font-size: 22px;
 `;
+
+const TopDiv = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+`;
+
 const AvatarUpload = styled.label`
   width: 80px;
-  overflow: hidden;
   height: 80px;
+  overflow: hidden;
   border-radius: 50%;
   background-color: #aaa1ff;
   cursor: pointer;
@@ -47,6 +61,21 @@ const AvatarInput = styled.input`
 const Name = styled.span`
   font-size: 22px;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+`;
+
+const Main = styled.main`
+  overflow-y: scroll;
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+  &::-webkit-scrollbar-track {
+    background-color: none;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #f9f9f9;
+    border-radius: 50px;
+  }
 `;
 
 const Records = styled.article`
@@ -127,37 +156,41 @@ export default function Profile() {
 
   return (
     <Wrapper>
-      <AvatarUpload htmlFor="avatar">
-        {avatar ? (
-          <AvatarImg src={avatar} />
-        ) : (
-          <svg
-            fill="currentColor"
-            viewBox="0 0 20 20"
-            xmlns="http://www.w3.org/2000/svg"
-            aria-hidden="true"
-          >
-            <path d="M10 8a3 3 0 100-6 3 3 0 000 6zM3.465 14.493a1.23 1.23 0 00.41 1.412A9.957 9.957 0 0010 18c2.31 0 4.438-.784 6.131-2.1.43-.333.604-.903.408-1.41a7.002 7.002 0 00-13.074.003z" />
-          </svg>
-        )}
-      </AvatarUpload>
-      <AvatarInput
-        onChange={onAvatarChange}
-        id="avatar"
-        type="file"
-        accept="image/*"
-      />
-      <Name>{user?.displayName ?? "Anonymous"}</Name>
-      <DatePicker
-        selected={selectedDate}
-        onChange={handleDateChange}
-        dateFormat="yyyy-MM-dd"
-      />
-      <Records>
-        {records.map((record) => (
-          <Record key={record.id} {...record} />
-        ))}
-      </Records>
+      <TopDiv>
+        <AvatarUpload htmlFor="avatar">
+          {avatar ? (
+            <AvatarImg src={avatar} />
+          ) : (
+            <svg
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
+            >
+              <path d="M10 8a3 3 0 100-6 3 3 0 000 6zM3.465 14.493a1.23 1.23 0 00.41 1.412A9.957 9.957 0 0010 18c2.31 0 4.438-.784 6.131-2.1.43-.333.604-.903.408-1.41a7.002 7.002 0 00-13.074.003z" />
+            </svg>
+          )}
+        </AvatarUpload>
+        <AvatarInput
+          onChange={onAvatarChange}
+          id="avatar"
+          type="file"
+          accept="image/*"
+        />
+        <Name>{user?.displayName ?? "Anonymous"}</Name>
+        <DatePicker
+          selected={selectedDate}
+          onChange={handleDateChange}
+          dateFormat="yyyy-MM-dd"
+        />
+      </TopDiv>
+      <Main>
+        <Records>
+          {records.map((record) => (
+            <Record key={record.id} {...record} />
+          ))}
+        </Records>
+      </Main>
     </Wrapper>
   );
 }
