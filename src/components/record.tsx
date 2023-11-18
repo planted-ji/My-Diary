@@ -42,7 +42,7 @@ const Username = styled.span`
 `;
 
 const Date = styled.time`
-  font-size: 10px;
+  font-size: 11px;
   line-height: 120%;
   color: #514f66;
 `;
@@ -84,7 +84,7 @@ export default function Record({
 
   const user = auth.currentUser;
   const onDelete = async () => {
-    const ok = confirm("정말 기록을 삭제하시나요?");
+    const ok = confirm("정말 기록을 삭제하나요?");
     // 로그인 유저 ID와 작성자 ID가 다를 경우, 함수 종료
     if (!ok || user?.uid !== userId) return;
     try {
