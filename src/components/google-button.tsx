@@ -11,7 +11,7 @@ const Button = styled.button`
     opacity: 0.8;
   }
   font-family: "NPSfontBold";
-  font-size: 14px;
+  font-size: 15px;
   width: 100%;
   color: #000;
   padding: 10px 20px;
