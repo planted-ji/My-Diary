@@ -4,10 +4,11 @@ import {
   onSnapshot,
   orderBy,
   query,
+  where,
 } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { styled } from "styled-components";
-import { db } from "../firebase";
+import { auth, db } from "../firebase";
 import Record from "./record";
 import { Unsubscribe } from "firebase/auth";
 
@@ -39,7 +40,7 @@ const Wrapper = styled.div`
 `;
 
 export default function Timeline() {
-  // Record 배열의 기본값이 빈 배열임을 알려줌
+  const user = auth.currentUser;
   const [records, setRecord] = useState<IRecord[]>([]);
 
   useEffect(() => {
@@ -48,6 +49,7 @@ export default function Timeline() {
       // 쿼리 생성
       const recordsQuery = query(
         collection(db, "records"),
+        where("userId", "==", user?.uid),
         orderBy("createdAt", "desc"),
         limit(10)
       );
