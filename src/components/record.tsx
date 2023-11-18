@@ -27,6 +27,10 @@ const MainRecord = styled.section`
   justify-content: space-between;
   align-items: flex-start;
   margin: 15px 0 10px 0;
+  @media (max-width: 480px) {
+    align-items: center;
+    flex-direction: column;
+  }
 `;
 
 const Photo = styled.img`
