@@ -1,27 +1,36 @@
-# React + TypeScript + Vite
+# 📝 나의 작은 일기장
+![image](https://github.com/planted-ji/My-Diary/assets/123479997/41ad95f1-6b2e-4c75-b912-e2a2284f3eea)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+|                 배포 링크                  |        ID        |    Password    |
+| :----------------------------------------: | :--------------: | :------------: |
+| https://my-personal-diary-project.web.app/ | test@account.com |  testaccount1  |
 
-Currently, two official plugins are available:
+## ⏰ 개발 기간
+- 23.11.15 ~ 23.11.18
+  
+## 🖥️ 프로젝트 소개
+- 180자 내의 문장으로 일상을 작은 단위로 기록할 수 있는 일기장입니다.
+- 회원가입을 통해 작성한 일기를 클라우드에 보관 및 관리할 수 있습니다.
+- 원하는 날짜를 선택해 그간의 기록을 되돌아볼 수 있습니다.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🛠️ 사용 기술
+- TypeScript: 타입 안정성에 따른 오류 감소를 위해 TypeScript를 사용했습니다.
+- Firebase: 사용자 인증, 스토리지, 클라우드와 같은 백엔드 기능 구현을 위해 Firebase를 사용했습니다.
+- React: 효율적인 UI 렌더링과 컴포넌트 기반 아키텍처를 위해 React 라이브러리를 사용했습니다.
 
-## Expanding the ESLint configuration
+## 📌 주요 기능
+### 계정 관리
+- 회원 가입: 이메일, 비밀번호를 입력해 개인 계정을 생성할 수 있습니다.
+- 로그인: 등록된 사용자는 로그인을 통해 계정에 액세스할 수 있습니다.
+- 로그아웃: 계정에서 안전하게 로그아웃할 수 있습니다.
+- 간편 로그인: 이메일을 통한 가입 대신 Google 계정을 통한 간편 로그인이 가능합니다.
+- 유저 프로필: 이미지를 업로드 하여 개인 프로필 사진을 업데이트할 수 있습니다.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### 일기 관리
+- 일기 작성: 텍스트와 이미지(기록 당 한 개의 이미지로 제한)를 포함해 일기를 작성할 수 있습니다.
+- 일기 확인: 작성한 일기는 홈 화면에 최신순으로 나열되며 실시간 타임라인 형식으로 확인할 수 있습니다.
+- 일기 삭제: 사용자 인증을 활용하여 권한 확인 후, 자신이 작성한 일기를 삭제할 수 있습니다.
 
-- Configure the top-level `parserOptions` property like this:
-
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+### 타임라인
+- 타임라인 표시: 작성한 일기를 최신순으로 나열해 표시합니다.
+- 날짜 기반 필터링: 특정 날짜를 선택해 해당 날짜에 작성한 일기를 확인할 수 있습니다.
