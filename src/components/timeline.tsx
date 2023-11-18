@@ -21,7 +21,7 @@ export interface IRecord {
   createdAt: string;
 }
 
-const Wrapper = styled.div`
+const Wrapper = styled.main`
   display: flex;
   gap: 10px;
   flex-direction: column;

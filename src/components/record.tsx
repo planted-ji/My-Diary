@@ -5,7 +5,7 @@ import { deleteDoc, doc } from "firebase/firestore";
 import { deleteObject, ref } from "firebase/storage";
 import { useState } from "react";
 
-const Wrapper = styled.div`
+const Wrapper = styled.article`
   display: grid;
   grid-template-columns: 3fr;
   padding: 20px;
@@ -21,7 +21,7 @@ const Div = styled.div`
   justify-content: space-between;
 `;
 
-const MainRecord = styled.div`
+const MainRecord = styled.section`
   display: flex;
   justify-content: space-between;
   align-items: flex-start;

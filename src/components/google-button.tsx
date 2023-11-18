@@ -3,14 +3,15 @@ import { auth } from "../firebase";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 
-const Button = styled.span`
+const Button = styled.button`
   margin-top: 50px;
   background-color: white;
   transition: all 0.2s;
   &:hover {
     opacity: 0.8;
   }
-  font-weight: 500;
+  font-family: "NPSfontBold";
+  font-size: 14px;
   width: 100%;
   color: #000;
   padding: 10px 20px;
@@ -39,7 +40,7 @@ export default function googleButton() {
     }
   };
   return (
-    <Button onClick={onClick}>
+    <Button type="button" onClick={onClick}>
       <Logo src="/google-logo.svg"></Logo>
       구글 계정으로 시작하기
     </Button>

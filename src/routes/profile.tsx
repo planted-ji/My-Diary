@@ -16,7 +16,7 @@ import Record from "../components/record";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
-const Wrapper = styled.div`
+const Wrapper = styled.section`
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -49,7 +49,7 @@ const Name = styled.span`
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
 `;
 
-const Records = styled.div`
+const Records = styled.article`
   display: flex;
   width: 100%;
   flex-direction: column;

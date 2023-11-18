@@ -2,7 +2,7 @@ import { Link, Outlet, useNavigate } from "react-router-dom";
 import { keyframes, styled } from "styled-components";
 import { auth } from "../firebase";
 
-const Wrapper = styled.div`
+const Wrapper = styled.section`
   display: grid;
   gap: 20px;
   grid-template-columns: 1fr 4fr;
@@ -31,8 +31,9 @@ const jellyAnimation = keyframes`
   }
 `;
 
-const MenuItem = styled.div`
+const MenuItem = styled.button`
   cursor: pointer;
+  background-color: transparent;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -68,7 +69,7 @@ export default function Layout() {
     <Wrapper>
       <Menu>
         <Link to="/">
-          <MenuItem>
+          <MenuItem type="button">
             <svg
               fill="currentColor"
               viewBox="0 0 20 20"
