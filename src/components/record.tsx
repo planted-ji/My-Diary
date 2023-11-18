@@ -48,6 +48,7 @@ const Date = styled.time`
 
 const Payload = styled.p`
   font-size: 18px;
+  line-height: 130%;
   color: #514f66;
   margin-right: 10px;
 `;
