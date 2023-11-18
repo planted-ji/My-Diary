@@ -13,6 +13,7 @@ const Wrapper = styled.article`
   border-radius: 15px;
   margin: 0 20px 0 20px;
   background-color: rgba(255, 255, 255, 0.8);
+  word-break: keep-all;
 `;
 
 const Div = styled.div`
@@ -36,18 +37,18 @@ const Photo = styled.img`
 `;
 
 const Username = styled.span`
-  font-weight: 600;
-  font-size: 15px;
+  font-size: 14px;
   color: #845f99;
 `;
 
 const Date = styled.time`
-  font-size: 11px;
+  font-size: 10px;
+  line-height: 120%;
   color: #514f66;
 `;
 
 const Payload = styled.p`
-  font-size: 18px;
+  font-size: 16px;
   line-height: 130%;
   color: #514f66;
   margin-right: 10px;
@@ -60,14 +61,14 @@ const DeleteButton = styled.button`
   }
   transition: all 0.2s;
   color: white;
-  font-weight: 600;
   border: 0;
   font-family: "NPSfontBold";
   font-size: 12px;
+  line-height: 110%;
   padding: 8px 10px;
   text-transform: uppercase;
   border-radius: 5px;
-  margin-right: 10px;
+  margin: 0 10px;
   cursor: pointer;
 `;
 
