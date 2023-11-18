@@ -2,7 +2,7 @@ import { Link, Outlet, useNavigate } from "react-router-dom";
 import { keyframes, styled } from "styled-components";
 import { auth } from "../firebase";
 
-const Wrapper = styled.section`
+const Wrapper = styled.nav`
   display: grid;
   gap: 20px;
   grid-template-columns: 1fr 4fr;
