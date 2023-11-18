@@ -1,5 +1,5 @@
 # 📝 나의 작은 일기장
-![image](https://github.com/planted-ji/My-Diary/assets/123479997/41ad95f1-6b2e-4c75-b912-e2a2284f3eea)
+![image](https://github.com/planted-ji/My-Diary/assets/123479997/23af00a2-5ea6-44e5-97eb-dc91be32c9ce)
 
 |                 배포 링크                  |        ID        |    Password    |
 | :----------------------------------------: | :--------------: | :------------: |
