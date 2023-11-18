@@ -47,7 +47,7 @@ export default function Login() {
   };
   return (
     <Wrapper>
-      <Title>나만의 일기장</Title>
+      <Title>나의 작은 일기장</Title>
       <Form onSubmit={onSubmit}>
         <Input
           onChange={onChange}
